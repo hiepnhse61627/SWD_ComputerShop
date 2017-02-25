@@ -106,20 +106,16 @@
         <value>2</value>
       </counter>
       <counter>
-        <item-type type-id="" type="AbstractElementGroup" />
-        <value>187</value>
-      </counter>
-      <counter>
         <item-type type-id="interruptible-activity-region" type="UmlInterruptibleActivityRegion" />
         <value>3</value>
       </counter>
       <counter>
-        <item-type type-id="" type="UniversalConnector" />
-        <value>7</value>
-      </counter>
-      <counter>
         <item-type type-id="activity-final-node" type="UmlActivityFinalNode" />
         <value>2</value>
+      </counter>
+      <counter>
+        <item-type type-id="" type="AbstractElementGroup" />
+        <value>15</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -881,7 +877,7 @@
             <style class="default" />
             <control-flow guard="" />
           </item>
-          <item id="di837694776888944145" cid="ELEM058" type="control-flow" name="Unvalid input" style-class="" visibility="package" change-tracking-state="added" creation-date="02/22/2017 15:14:47" from="di813178990197405124" to="di248410676988785920">
+          <item id="di837694776888944145" cid="ELEM058" type="control-flow" name="Invalid input" style-class="" visibility="package" change-tracking-state="added" creation-date="02/22/2017 15:14:47" from="di813178990197405124" to="di248410676988785920">
             <style class="default" />
             <control-flow guard="" />
           </item>
@@ -1148,11 +1144,11 @@
             <style class="default" />
             <control-flow guard="" />
           </item>
-          <item id="di432424187438564358" cid="A007" type="activity" name="Choose An Existing Product" style-class="" owner="di593716568843295076" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:02:40">
+          <item id="di432424187438564358" cid="A007" type="activity" name="Choose An Existing Product" style-class="" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:02:40">
             <style class="default" />
             <activity />
           </item>
-          <item id="di652291496791781605" cid="A008" type="activity" name="Remove Product" style-class="" owner="di593716568843295076" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:03:15">
+          <item id="di652291496791781605" cid="A008" type="activity" name="Remove Product" style-class="" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:03:15">
             <style class="default" />
             <activity />
           </item>
@@ -1160,10 +1156,10 @@
             <style class="default" />
             <activity />
           </item>
-          <item id="di520173768615934141" cid="ACT010" type="action" name="Confirm" style-class="" owner="di593716568843295076" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:07:04">
+          <item id="di520173768615934141" cid="ACT010" type="action" name="Confirm" style-class="" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:07:04">
             <style class="default" />
           </item>
-          <item id="di948874219755515313" cid="DC005" type="decision" name="" style-class="" owner="di593716568843295076" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:08:03">
+          <item id="di948874219755515313" cid="DC005" type="decision" name="" style-class="" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:08:03">
             <style class="default" />
           </item>
           <item id="di122515607864103365" cid="ELEM062" type="control-flow" name="" style-class="" visibility="package" change-tracking-state="added" creation-date="02/22/2017 15:35:29" from="di118272410102837153" to="di395914395153239441">
@@ -1174,7 +1170,7 @@
             <style class="default" />
             <activity />
           </item>
-          <item id="di643170592486311898" cid="A010" type="activity" name="Update to Database" style-class="" owner="di593716568843295076" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:09:22">
+          <item id="di643170592486311898" cid="A010" type="activity" name="Update to Database" style-class="" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:09:22">
             <style class="default" />
             <activity />
           </item>
@@ -1347,7 +1343,7 @@
             <style class="default" />
             <activity />
           </item>
-          <item id="di861295698771448077" cid="ELEM058" type="control-flow" name="Unvalid input" style-class="" visibility="package" change-tracking-state="added" creation-date="02/22/2017 15:14:47" from="di577557673807111561" to="di980856774681490556">
+          <item id="di861295698771448077" cid="ELEM058" type="control-flow" name="Invalid input" style-class="" visibility="package" change-tracking-state="added" creation-date="02/22/2017 15:14:47" from="di577557673807111561" to="di980856774681490556">
             <style class="default" />
             <control-flow guard="" />
           </item>
@@ -1420,34 +1416,34 @@
           <item id="di101536067145004943" cid="ACT011" type="action" name="Display Admin page" style-class="" visibility="package" change-tracking-state="added" creation-date="02/22/2017 14:57:18">
             <style class="default" />
           </item>
-          <item id="di604397898160618946" cid="A007" type="activity" name="Click Add A New product" style-class="" owner="di696294862263686418" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:02:40">
+          <item id="di604397898160618946" cid="A007" type="activity" name="Click Add A New product" style-class="" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:02:40">
             <style class="default" />
             <activity />
           </item>
-          <item id="di739645456530686673" cid="A008" type="activity" name="Insert New Product's Info" style-class="" owner="di696294862263686418" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:03:15">
+          <item id="di739645456530686673" cid="A008" type="activity" name="Insert New Product's Info" style-class="" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:03:15">
             <style class="default" />
             <activity />
           </item>
-          <item id="di223942711426593284" cid="ACT009" type="action" name="Validate" style-class="" owner="di696294862263686418" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:04:51">
+          <item id="di223942711426593284" cid="ACT009" type="action" name="Validate" style-class="" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:04:51">
             <style class="default" />
           </item>
           <item id="di463755074908747403" cid="ELEM046" type="control-flow" name="" style-class="" visibility="package" change-tracking-state="added" creation-date="02/22/2017 14:56:22" from="di741469216155832622" to="di622293338886103078">
             <style class="default" />
             <control-flow guard="" />
           </item>
-          <item id="di673760716439563397" cid="DC002" type="decision" name="" style-class="" owner="di696294862263686418" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:06:01">
+          <item id="di673760716439563397" cid="DC002" type="decision" name="" style-class="" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:06:01">
             <style class="default" />
           </item>
           <item id="di741469216155832622" cid="IN003" type="initial-node" name="Start" style-class="" visibility="package" change-tracking-state="added" creation-date="02/22/2017 14:55:06">
             <style class="default" />
           </item>
-          <item id="di360423325579374291" cid="ACT010" type="action" name="Confirm" style-class="" owner="di696294862263686418" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:07:04">
+          <item id="di360423325579374291" cid="ACT010" type="action" name="Confirm" style-class="" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:07:04">
             <style class="default" />
           </item>
           <item id="di928291147955869258" cid="IAR002" type="interruptible-activity-region" name="System" style-class="" visibility="package" change-tracking-state="added" creation-date="02/22/2017 14:54:30">
             <style class="default" />
           </item>
-          <item id="di166104190643873827" cid="DC005" type="decision" name="" style-class="" owner="di696294862263686418" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:08:03">
+          <item id="di166104190643873827" cid="DC005" type="decision" name="" style-class="" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:08:03">
             <style class="default" />
           </item>
           <item id="di523649451640382175" cid="IAR001" type="interruptible-activity-region" name="Admin" style-class="" visibility="package" change-tracking-state="added" creation-date="02/22/2017 14:54:07">
@@ -1457,7 +1453,7 @@
             <style class="default" />
             <activity />
           </item>
-          <item id="di314073297895683336" cid="A010" type="activity" name="Update to Database" style-class="" owner="di696294862263686418" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:09:22">
+          <item id="di314073297895683336" cid="A010" type="activity" name="Update to Database" style-class="" visibility="package" change-tracking-state="added" creation-date="02/13/2017 17:09:22">
             <style class="default" />
             <activity />
           </item>
