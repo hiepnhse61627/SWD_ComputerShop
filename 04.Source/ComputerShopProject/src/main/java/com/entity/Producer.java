@@ -1,7 +1,6 @@
 package com.entity;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,20 +10,6 @@ import java.util.Date;
 @Entity
 @Table(name = "cs_producer", catalog = "computershop", schema = "", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"cd"})})
-@XmlRootElement
-@NamedQueries({
-        @NamedQuery(name = "CsProducer.findAll", query = "SELECT c FROM CsProducer c"),
-        @NamedQuery(name = "CsProducer.findById", query = "SELECT c FROM CsProducer c WHERE c.id = :id"),
-        @NamedQuery(name = "CsProducer.findByCd", query = "SELECT c FROM CsProducer c WHERE c.cd = :cd"),
-        @NamedQuery(name = "CsProducer.findByName", query = "SELECT c FROM CsProducer c WHERE c.name = :name"),
-        @NamedQuery(name = "CsProducer.findByDescription", query = "SELECT c FROM CsProducer c WHERE c.description = :description"),
-        @NamedQuery(name = "CsProducer.findByEmail", query = "SELECT c FROM CsProducer c WHERE c.email = :email"),
-        @NamedQuery(name = "CsProducer.findByAddress", query = "SELECT c FROM CsProducer c WHERE c.address = :address"),
-        @NamedQuery(name = "CsProducer.findByPhone", query = "SELECT c FROM CsProducer c WHERE c.phone = :phone"),
-        @NamedQuery(name = "CsProducer.findByCreatedOn", query = "SELECT c FROM CsProducer c WHERE c.createdOn = :createdOn"),
-        @NamedQuery(name = "CsProducer.findByCreatedBy", query = "SELECT c FROM CsProducer c WHERE c.createdBy = :createdBy"),
-        @NamedQuery(name = "CsProducer.findByModifiedOn", query = "SELECT c FROM CsProducer c WHERE c.modifiedOn = :modifiedOn"),
-        @NamedQuery(name = "CsProducer.findByModifiedBy", query = "SELECT c FROM CsProducer c WHERE c.modifiedBy = :modifiedBy")})
 public class Producer implements Serializable {
 
     private static final long serialVersionUID = 1L;

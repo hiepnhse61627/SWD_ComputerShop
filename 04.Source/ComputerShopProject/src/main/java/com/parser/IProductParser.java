@@ -14,5 +14,7 @@ public interface IProductParser {
 
     public ProductDTO parseToDTO(Product entity);
 
+    public Product updateProduct(ProductDTO dto, Integer id);
+
     public List<ProductDTO> parseToListDTO(List<Product> listEntity);
 }

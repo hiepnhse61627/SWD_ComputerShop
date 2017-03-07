@@ -1,7 +1,6 @@
 package com.entity;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,17 +10,6 @@ import java.util.Date;
 @Entity
 @Table(name = "cs_cart", catalog = "computershop", schema = "", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"cd"})})
-@XmlRootElement
-@NamedQueries({
-        @NamedQuery(name = "CsCart.findAll", query = "SELECT c FROM CsCart c"),
-        @NamedQuery(name = "CsCart.findById", query = "SELECT c FROM CsCart c WHERE c.id = :id"),
-        @NamedQuery(name = "CsCart.findByCd", query = "SELECT c FROM CsCart c WHERE c.cd = :cd"),
-        @NamedQuery(name = "CsCart.findByCustomerCd", query = "SELECT c FROM CsCart c WHERE c.customerCd = :customerCd"),
-        @NamedQuery(name = "CsCart.findByTotalPrice", query = "SELECT c FROM CsCart c WHERE c.totalPrice = :totalPrice"),
-        @NamedQuery(name = "CsCart.findByCreatedOn", query = "SELECT c FROM CsCart c WHERE c.createdOn = :createdOn"),
-        @NamedQuery(name = "CsCart.findByCreatedBy", query = "SELECT c FROM CsCart c WHERE c.createdBy = :createdBy"),
-        @NamedQuery(name = "CsCart.findByModifiedOn", query = "SELECT c FROM CsCart c WHERE c.modifiedOn = :modifiedOn"),
-        @NamedQuery(name = "CsCart.findByModifiedBy", query = "SELECT c FROM CsCart c WHERE c.modifiedBy = :modifiedBy")})
 public class Cart implements Serializable {
 
     private static final long serialVersionUID = 1L;

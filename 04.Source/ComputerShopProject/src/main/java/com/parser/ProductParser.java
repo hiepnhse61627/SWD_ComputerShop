@@ -2,6 +2,8 @@ package com.parser;
 
 import com.dto.ProductDTO;
 import com.entity.Product;
+import com.service.IProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,9 @@ import java.util.List;
  * Created by hiepnhse61627 on 07/03/2017.
  */
 public class ProductParser implements IProductParser {
+
+    @Autowired
+    private IProductService productService;
 
     /**
      * [This method convert from ProductDTO to Product]
@@ -21,7 +26,6 @@ public class ProductParser implements IProductParser {
     public Product parseToEntity(ProductDTO dto) {
         Product entity = new Product();
 
-        entity.setId(dto.getProductId());
         entity.setCd(dto.getProductCd());
         entity.setCategoryCd(dto.getCategoryCd());
         entity.setProducerCd(dto.getProducerCd());
@@ -63,6 +67,31 @@ public class ProductParser implements IProductParser {
         dto.setModifiedBy(entity.getModifiedBy());
 
         return dto;
+    }
+
+    /**
+     * [This method call existed entity and set new data to this entity]
+     * @param dto
+     * @param id
+     * @return entity
+     * @author HiepNH [created on 07/03/2017]
+     */
+    @Override
+    public Product updateProduct(ProductDTO dto, Integer id) {
+        Product entity = productService.findProductById(id);
+
+        entity.setCd(dto.getProductCd());
+        entity.setCategoryCd(dto.getCategoryCd());
+        entity.setProducerCd(dto.getProducerCd());
+        entity.setName(dto.getProductName());
+        entity.setDescription(dto.getProductDescription());
+        entity.setPrice(dto.getProductPrice());
+        entity.setIsSaleOff(dto.getSaleOff());
+        entity.setSaleOffCd(dto.getSaleOffCd());
+        entity.setModifiedOn(dto.getModifiedOn());
+        entity.setModifiedBy(dto.getModifiedBy());
+
+        return entity;
     }
 
     /**

@@ -1,7 +1,6 @@
 package com.entity;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,20 +9,6 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "cs_order_detail", catalog = "computershop", schema = "")
-@XmlRootElement
-@NamedQueries({
-        @NamedQuery(name = "CsOrderDetail.findAll", query = "SELECT c FROM CsOrderDetail c"),
-        @NamedQuery(name = "CsOrderDetail.findById", query = "SELECT c FROM CsOrderDetail c WHERE c.id = :id"),
-        @NamedQuery(name = "CsOrderDetail.findByOrderCd", query = "SELECT c FROM CsOrderDetail c WHERE c.orderCd = :orderCd"),
-        @NamedQuery(name = "CsOrderDetail.findByProductCd", query = "SELECT c FROM CsOrderDetail c WHERE c.productCd = :productCd"),
-        @NamedQuery(name = "CsOrderDetail.findByProductName", query = "SELECT c FROM CsOrderDetail c WHERE c.productName = :productName"),
-        @NamedQuery(name = "CsOrderDetail.findByQuantity", query = "SELECT c FROM CsOrderDetail c WHERE c.quantity = :quantity"),
-        @NamedQuery(name = "CsOrderDetail.findByUnitPrice", query = "SELECT c FROM CsOrderDetail c WHERE c.unitPrice = :unitPrice"),
-        @NamedQuery(name = "CsOrderDetail.findByTotalPrice", query = "SELECT c FROM CsOrderDetail c WHERE c.totalPrice = :totalPrice"),
-        @NamedQuery(name = "CsOrderDetail.findByCreatedOn", query = "SELECT c FROM CsOrderDetail c WHERE c.createdOn = :createdOn"),
-        @NamedQuery(name = "CsOrderDetail.findByCreatedBy", query = "SELECT c FROM CsOrderDetail c WHERE c.createdBy = :createdBy"),
-        @NamedQuery(name = "CsOrderDetail.findByModifiedOn", query = "SELECT c FROM CsOrderDetail c WHERE c.modifiedOn = :modifiedOn"),
-        @NamedQuery(name = "CsOrderDetail.findByModifiedBy", query = "SELECT c FROM CsOrderDetail c WHERE c.modifiedBy = :modifiedBy")})
 public class OrderDetail implements Serializable {
 
     private static final long serialVersionUID = 1L;

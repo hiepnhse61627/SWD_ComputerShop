@@ -2,6 +2,7 @@ package com.service;
 
 import com.dto.ProductDTO;
 import com.entity.Product;
+import com.parser.IProductParser;
 import com.parser.ProductParser;
 import com.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class ProductService implements IProductService {
     private ProductRepository productRepository;
 
     @Autowired
-    private ProductParser productParser;
+    private IProductParser productParser;
 
     @Override
     public ProductDTO createProDuct(ProductDTO dto) {
@@ -29,7 +30,7 @@ public class ProductService implements IProductService {
 
     @Override
     public ProductDTO updateProduct(ProductDTO dto) {
-        Product entity = productParser.parseToEntity(dto);
+        Product entity = productParser.updateProduct(dto, dto.getProductId());
         Product saved = productRepository.save(entity);
 
         return productParser.parseToDTO(saved);
@@ -46,7 +47,12 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ProductDTO findProductById(Integer id) {
+    public ProductDTO findProductDTOById(Integer id) {
         return productParser.parseToDTO(productRepository.findOne(id));
+    }
+
+    @Override
+    public Product findProductById(Integer id) {
+        return productRepository.findOne(id);
     }
 }

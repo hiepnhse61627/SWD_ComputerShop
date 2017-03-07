@@ -1,7 +1,6 @@
 package com.entity;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,19 +9,6 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "cs_shipping_info", catalog = "computershop", schema = "")
-@XmlRootElement
-@NamedQueries({
-        @NamedQuery(name = "CsShippingInfo.findAll", query = "SELECT c FROM CsShippingInfo c"),
-        @NamedQuery(name = "CsShippingInfo.findById", query = "SELECT c FROM CsShippingInfo c WHERE c.id = :id"),
-        @NamedQuery(name = "CsShippingInfo.findByOrderCd", query = "SELECT c FROM CsShippingInfo c WHERE c.orderCd = :orderCd"),
-        @NamedQuery(name = "CsShippingInfo.findByShippingType", query = "SELECT c FROM CsShippingInfo c WHERE c.shippingType = :shippingType"),
-        @NamedQuery(name = "CsShippingInfo.findByShippingFee", query = "SELECT c FROM CsShippingInfo c WHERE c.shippingFee = :shippingFee"),
-        @NamedQuery(name = "CsShippingInfo.findByShippingAddress", query = "SELECT c FROM CsShippingInfo c WHERE c.shippingAddress = :shippingAddress"),
-        @NamedQuery(name = "CsShippingInfo.findByShippingTime", query = "SELECT c FROM CsShippingInfo c WHERE c.shippingTime = :shippingTime"),
-        @NamedQuery(name = "CsShippingInfo.findByCreatedOn", query = "SELECT c FROM CsShippingInfo c WHERE c.createdOn = :createdOn"),
-        @NamedQuery(name = "CsShippingInfo.findByCreatedBy", query = "SELECT c FROM CsShippingInfo c WHERE c.createdBy = :createdBy"),
-        @NamedQuery(name = "CsShippingInfo.findByModifiedOn", query = "SELECT c FROM CsShippingInfo c WHERE c.modifiedOn = :modifiedOn"),
-        @NamedQuery(name = "CsShippingInfo.findByModifiedBy", query = "SELECT c FROM CsShippingInfo c WHERE c.modifiedBy = :modifiedBy")})
 public class ShippingInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;

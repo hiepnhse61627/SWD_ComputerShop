@@ -1,6 +1,7 @@
 package com.service;
 
 import com.dto.ProductDTO;
+import com.entity.Product;
 
 import java.util.List;
 
@@ -17,5 +18,7 @@ public interface IProductService {
 
     public List<ProductDTO> getListProduct();
 
-    public ProductDTO findProductById(Integer id);
+    public ProductDTO findProductDTOById(Integer id);
+
+    public Product findProductById(Integer id);
 }

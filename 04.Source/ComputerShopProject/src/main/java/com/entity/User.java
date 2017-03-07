@@ -1,7 +1,6 @@
 package com.entity;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,25 +11,6 @@ import java.util.Date;
 @Table(name = "cs_user", catalog = "computershop", schema = "", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"cd"}),
         @UniqueConstraint(columnNames = {"username"})})
-@XmlRootElement
-@NamedQueries({
-        @NamedQuery(name = "CsUser.findAll", query = "SELECT c FROM CsUser c"),
-        @NamedQuery(name = "CsUser.findById", query = "SELECT c FROM CsUser c WHERE c.id = :id"),
-        @NamedQuery(name = "CsUser.findByCd", query = "SELECT c FROM CsUser c WHERE c.cd = :cd"),
-        @NamedQuery(name = "CsUser.findByUsername", query = "SELECT c FROM CsUser c WHERE c.username = :username"),
-        @NamedQuery(name = "CsUser.findByPassword", query = "SELECT c FROM CsUser c WHERE c.password = :password"),
-        @NamedQuery(name = "CsUser.findByFirstname", query = "SELECT c FROM CsUser c WHERE c.firstname = :firstname"),
-        @NamedQuery(name = "CsUser.findByLastname", query = "SELECT c FROM CsUser c WHERE c.lastname = :lastname"),
-        @NamedQuery(name = "CsUser.findByEmail", query = "SELECT c FROM CsUser c WHERE c.email = :email"),
-        @NamedQuery(name = "CsUser.findByAddress", query = "SELECT c FROM CsUser c WHERE c.address = :address"),
-        @NamedQuery(name = "CsUser.findByPhone", query = "SELECT c FROM CsUser c WHERE c.phone = :phone"),
-        @NamedQuery(name = "CsUser.findByCreditCardNo", query = "SELECT c FROM CsUser c WHERE c.creditCardNo = :creditCardNo"),
-        @NamedQuery(name = "CsUser.findByIsVip", query = "SELECT c FROM CsUser c WHERE c.isVip = :isVip"),
-        @NamedQuery(name = "CsUser.findByIsAdmin", query = "SELECT c FROM CsUser c WHERE c.isAdmin = :isAdmin"),
-        @NamedQuery(name = "CsUser.findByCreatedOn", query = "SELECT c FROM CsUser c WHERE c.createdOn = :createdOn"),
-        @NamedQuery(name = "CsUser.findByCreatedBy", query = "SELECT c FROM CsUser c WHERE c.createdBy = :createdBy"),
-        @NamedQuery(name = "CsUser.findByModifiedOn", query = "SELECT c FROM CsUser c WHERE c.modifiedOn = :modifiedOn"),
-        @NamedQuery(name = "CsUser.findByModifiedBy", query = "SELECT c FROM CsUser c WHERE c.modifiedBy = :modifiedBy")})
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;

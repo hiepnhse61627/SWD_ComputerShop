@@ -1,7 +1,6 @@
 package com.entity;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,22 +10,6 @@ import java.util.Date;
 @Entity
 @Table(name = "cs_product", catalog = "computershop", schema = "", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"cd"})})
-@XmlRootElement
-@NamedQueries({
-        @NamedQuery(name = "CsProduct.findAll", query = "SELECT c FROM CsProduct c"),
-        @NamedQuery(name = "CsProduct.findById", query = "SELECT c FROM CsProduct c WHERE c.id = :id"),
-        @NamedQuery(name = "CsProduct.findByCd", query = "SELECT c FROM CsProduct c WHERE c.cd = :cd"),
-        @NamedQuery(name = "CsProduct.findByCategoryCd", query = "SELECT c FROM CsProduct c WHERE c.categoryCd = :categoryCd"),
-        @NamedQuery(name = "CsProduct.findByProducerCd", query = "SELECT c FROM CsProduct c WHERE c.producerCd = :producerCd"),
-        @NamedQuery(name = "CsProduct.findByName", query = "SELECT c FROM CsProduct c WHERE c.name = :name"),
-        @NamedQuery(name = "CsProduct.findByDescription", query = "SELECT c FROM CsProduct c WHERE c.description = :description"),
-        @NamedQuery(name = "CsProduct.findByPrice", query = "SELECT c FROM CsProduct c WHERE c.price = :price"),
-        @NamedQuery(name = "CsProduct.findByIsSaleOff", query = "SELECT c FROM CsProduct c WHERE c.isSaleOff = :isSaleOff"),
-        @NamedQuery(name = "CsProduct.findBySaleOffCd", query = "SELECT c FROM CsProduct c WHERE c.saleOffCd = :saleOffCd"),
-        @NamedQuery(name = "CsProduct.findByCreatedOn", query = "SELECT c FROM CsProduct c WHERE c.createdOn = :createdOn"),
-        @NamedQuery(name = "CsProduct.findByCreatedBy", query = "SELECT c FROM CsProduct c WHERE c.createdBy = :createdBy"),
-        @NamedQuery(name = "CsProduct.findByModifiedOn", query = "SELECT c FROM CsProduct c WHERE c.modifiedOn = :modifiedOn"),
-        @NamedQuery(name = "CsProduct.findByModifiedBy", query = "SELECT c FROM CsProduct c WHERE c.modifiedBy = :modifiedBy")})
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
