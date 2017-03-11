@@ -88,9 +88,11 @@ public class SaleoffParser implements ISaleoffParser {
     public List<SaleoffDTO> parseToListDTO(List<Saleoff> listEntity) {
         List<SaleoffDTO> listDTO = new ArrayList<>();
 
-        for (Saleoff entity : listEntity) {
-            SaleoffDTO dto = parseToDTO(entity);
-            listDTO.add(dto);
+        if ((null != listEntity) && (!listEntity.isEmpty())) {
+            for (Saleoff entity : listEntity) {
+                SaleoffDTO dto = parseToDTO(entity);
+                listDTO.add(dto);
+            }
         }
 
         return listDTO;
