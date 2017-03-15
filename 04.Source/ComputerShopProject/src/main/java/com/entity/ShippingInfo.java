@@ -1,10 +1,24 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
+ *
  * @author hiepnhse61627
  */
 @Entity
@@ -17,34 +31,40 @@ public class ShippingInfo implements Serializable {
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
     private Integer id;
-    @Column(name = "orderCd", length = 100)
-    private String orderCd;
-    @Column(name = "shippingType", length = 100)
+    @Basic(optional = false)
+    @Column(name = "order_id", nullable = false)
+    private int orderId;
+    @Column(name = "shipping_type", length = 100)
     private String shippingType;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "shippingFee", precision = 12)
+    @Column(name = "shipping_fee", precision = 12)
     private Float shippingFee;
-    @Column(name = "shippingAddress", length = 255)
+    @Column(name = "shipping_address", length = 255)
     private String shippingAddress;
-    @Column(name = "shippingTime")
+    @Column(name = "shipping_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date shippingTime;
-    @Column(name = "createdOn")
+    @Basic(optional = false)
+    @Column(name = "created_on", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
-    @Column(name = "createdBy", length = 50)
-    private String createdBy;
-    @Column(name = "modifiedOn")
+    @Basic(optional = false)
+    @Column(name = "modified_on", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedOn;
-    @Column(name = "modifiedBy", length = 50)
-    private String modifiedBy;
 
     public ShippingInfo() {
     }
 
     public ShippingInfo(Integer id) {
         this.id = id;
+    }
+
+    public ShippingInfo(Integer id, int orderId, Date createdOn, Date modifiedOn) {
+        this.id = id;
+        this.orderId = orderId;
+        this.createdOn = createdOn;
+        this.modifiedOn = modifiedOn;
     }
 
     public Integer getId() {
@@ -55,12 +75,12 @@ public class ShippingInfo implements Serializable {
         this.id = id;
     }
 
-    public String getOrderCd() {
-        return orderCd;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrderCd(String orderCd) {
-        this.orderCd = orderCd;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public String getShippingType() {
@@ -103,28 +123,12 @@ public class ShippingInfo implements Serializable {
         this.createdOn = createdOn;
     }
 
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
     public Date getModifiedOn() {
         return modifiedOn;
     }
 
     public void setModifiedOn(Date modifiedOn) {
         this.modifiedOn = modifiedOn;
-    }
-
-    public String getModifiedBy() {
-        return modifiedBy;
-    }
-
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
     }
 
     @Override
@@ -149,8 +153,7 @@ public class ShippingInfo implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CsShippingInfo[ id=" + id + " ]";
+        return "entity.ShippingInfo[ id=" + id + " ]";
     }
-
+    
 }
-

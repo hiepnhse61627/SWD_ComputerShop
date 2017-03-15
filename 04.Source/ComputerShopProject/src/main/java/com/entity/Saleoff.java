@@ -1,15 +1,30 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 /**
+ *
  * @author hiepnhse61627
  */
 @Entity
 @Table(name = "cs_saleoff", catalog = "computershop", schema = "", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"cd"})})
+    @UniqueConstraint(columnNames = {"cd"})})
 public class Saleoff implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -21,26 +36,32 @@ public class Saleoff implements Serializable {
     @Basic(optional = false)
     @Column(name = "cd", nullable = false, length = 100)
     private String cd;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "salePercent", precision = 12)
-    private Float salePercent;
+    @Basic(optional = false)
+    @Column(name = "sale_percent", nullable = false)
+    private float salePercent;
     @Column(name = "description", length = 255)
     private String description;
-    @Column(name = "dateFrom")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Basic(optional = false)
+    @Column(name = "date_from", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date dateFrom;
-    @Column(name = "dateTo")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Basic(optional = false)
+    @Column(name = "date_to", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date dateTo;
-    @Column(name = "createdOn")
+    @Basic(optional = false)
+    @Column(name = "created_on", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
-    @Column(name = "createdBy", length = 50)
+    @Basic(optional = false)
+    @Column(name = "created_by", nullable = false, length = 50)
     private String createdBy;
-    @Column(name = "modifiedOn")
+    @Basic(optional = false)
+    @Column(name = "modified_on", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedOn;
-    @Column(name = "modifiedBy", length = 50)
+    @Basic(optional = false)
+    @Column(name = "modified_by", nullable = false, length = 50)
     private String modifiedBy;
 
     public Saleoff() {
@@ -50,9 +71,16 @@ public class Saleoff implements Serializable {
         this.id = id;
     }
 
-    public Saleoff(Integer id, String cd) {
+    public Saleoff(Integer id, String cd, float salePercent, Date dateFrom, Date dateTo, Date createdOn, String createdBy, Date modifiedOn, String modifiedBy) {
         this.id = id;
         this.cd = cd;
+        this.salePercent = salePercent;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+        this.createdOn = createdOn;
+        this.createdBy = createdBy;
+        this.modifiedOn = modifiedOn;
+        this.modifiedBy = modifiedBy;
     }
 
     public Integer getId() {
@@ -71,11 +99,11 @@ public class Saleoff implements Serializable {
         this.cd = cd;
     }
 
-    public Float getSalePercent() {
+    public float getSalePercent() {
         return salePercent;
     }
 
-    public void setSalePercent(Float salePercent) {
+    public void setSalePercent(float salePercent) {
         this.salePercent = salePercent;
     }
 
@@ -157,7 +185,7 @@ public class Saleoff implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CsSaleoff[ id=" + id + " ]";
+        return "entity.Saleoff[ id=" + id + " ]";
     }
-
+    
 }

@@ -9,8 +9,6 @@ public class UserDTO {
 
     private Integer userId;
 
-    private String userCd;
-
     private String username;
 
     private String password;
@@ -33,8 +31,6 @@ public class UserDTO {
 
     private Date createdOn;
 
-    private String createdBy;
-
     private Date modifiedOn;
 
     private String modifiedBy;
@@ -43,9 +39,8 @@ public class UserDTO {
 
     }
 
-    public UserDTO(Integer userId, String userCd, String username, String password, String firstname, String lastname, String email, String address, String phone, String creditCardNo, Boolean isVip, Boolean isAdmin, Date createdOn, String createdBy, Date modifiedOn, String modifiedBy) {
+    public UserDTO(Integer userId, String username, String password, String firstname, String lastname, String email, String address, String phone, String creditCardNo, Boolean isVip, Boolean isAdmin, Date createdOn, Date modifiedOn, String modifiedBy) {
         this.userId = userId;
-        this.userCd = userCd;
         this.username = username;
         this.password = password;
         this.firstname = firstname;
@@ -57,7 +52,6 @@ public class UserDTO {
         this.isVip = isVip;
         this.isAdmin = isAdmin;
         this.createdOn = createdOn;
-        this.createdBy = createdBy;
         this.modifiedOn = modifiedOn;
         this.modifiedBy = modifiedBy;
     }
@@ -68,14 +62,6 @@ public class UserDTO {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public String getUserCd() {
-        return userCd;
-    }
-
-    public void setUserCd(String userCd) {
-        this.userCd = userCd;
     }
 
     public String getUsername() {
@@ -164,14 +150,6 @@ public class UserDTO {
 
     public void setCreatedOn(Date createdOn) {
         this.createdOn = createdOn;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
     }
 
     public Date getModifiedOn() {

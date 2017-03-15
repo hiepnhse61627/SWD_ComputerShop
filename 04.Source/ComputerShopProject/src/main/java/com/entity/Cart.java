@@ -1,15 +1,30 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 /**
+ *
  * @author hiepnhse61627
  */
 @Entity
 @Table(name = "cs_cart", catalog = "computershop", schema = "", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"cd"})})
+    @UniqueConstraint(columnNames = {"cd"})})
 public class Cart implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -135,7 +150,7 @@ public class Cart implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CsCart[ id=" + id + " ]";
+        return "entity.Cart[ id=" + id + " ]";
     }
-
+    
 }

@@ -1,16 +1,30 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 /**
+ *
  * @author hiepnhse61627
  */
 @Entity
 @Table(name = "cs_user", catalog = "computershop", schema = "", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"cd"}),
-        @UniqueConstraint(columnNames = {"username"})})
+    @UniqueConstraint(columnNames = {"username"})})
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -20,12 +34,10 @@ public class User implements Serializable {
     @Column(name = "id", nullable = false)
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "cd", nullable = false, length = 50)
-    private String cd;
-    @Basic(optional = false)
     @Column(name = "username", nullable = false, length = 50)
     private String username;
-    @Column(name = "password", length = 255)
+    @Basic(optional = false)
+    @Column(name = "password", nullable = false, length = 255)
     private String password;
     @Column(name = "firstname", length = 100)
     private String firstname;
@@ -37,21 +49,19 @@ public class User implements Serializable {
     private String address;
     @Column(name = "phone", length = 20)
     private String phone;
-    @Column(name = "creditCardNo", length = 20)
+    @Column(name = "credit_card_no", length = 20)
     private String creditCardNo;
-    @Column(name = "isVip")
+    @Column(name = "is_vip")
     private Boolean isVip;
-    @Column(name = "isAdmin")
+    @Column(name = "is_admin")
     private Boolean isAdmin;
-    @Column(name = "createdOn")
+    @Column(name = "created_on")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
-    @Column(name = "createdBy", length = 50)
-    private String createdBy;
-    @Column(name = "modifiedOn")
+    @Column(name = "modified_on")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedOn;
-    @Column(name = "modifiedBy", length = 50)
+    @Column(name = "modified_by", length = 50)
     private String modifiedBy;
 
     public User() {
@@ -61,10 +71,10 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public User(Integer id, String cd, String username) {
+    public User(Integer id, String username, String password) {
         this.id = id;
-        this.cd = cd;
         this.username = username;
+        this.password = password;
     }
 
     public Integer getId() {
@@ -73,14 +83,6 @@ public class User implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getCd() {
-        return cd;
-    }
-
-    public void setCd(String cd) {
-        this.cd = cd;
     }
 
     public String getUsername() {
@@ -171,14 +173,6 @@ public class User implements Serializable {
         this.createdOn = createdOn;
     }
 
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
     public Date getModifiedOn() {
         return modifiedOn;
     }
@@ -217,8 +211,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CsUser[ id=" + id + " ]";
+        return "entity.User[ id=" + id + " ]";
     }
-
+    
 }
-

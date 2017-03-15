@@ -1,15 +1,30 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 /**
+ *
  * @author hiepnhse61627
  */
 @Entity
 @Table(name = "cs_category", catalog = "computershop", schema = "", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"cd"})})
+    @UniqueConstraint(columnNames = {"cd"})})
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -21,19 +36,20 @@ public class Category implements Serializable {
     @Basic(optional = false)
     @Column(name = "cd", nullable = false, length = 100)
     private String cd;
-    @Column(name = "name", length = 255)
+    @Basic(optional = false)
+    @Column(name = "name", nullable = false, length = 255)
     private String name;
     @Column(name = "description", length = 255)
     private String description;
-    @Column(name = "createdOn")
+    @Column(name = "created_on")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
-    @Column(name = "createdBy", length = 50)
+    @Column(name = "created_by", length = 50)
     private String createdBy;
-    @Column(name = "modifiedOn")
+    @Column(name = "modified_on")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedOn;
-    @Column(name = "modifiedBy", length = 50)
+    @Column(name = "modified_by", length = 50)
     private String modifiedBy;
 
     public Category() {
@@ -43,9 +59,10 @@ public class Category implements Serializable {
         this.id = id;
     }
 
-    public Category(Integer id, String cd) {
+    public Category(Integer id, String cd, String name) {
         this.id = id;
         this.cd = cd;
+        this.name = name;
     }
 
     public Integer getId() {
@@ -134,7 +151,7 @@ public class Category implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CsCategory[ id=" + id + " ]";
+        return "entity.Category[ id=" + id + " ]";
     }
-
+    
 }

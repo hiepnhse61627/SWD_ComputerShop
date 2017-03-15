@@ -1,15 +1,30 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 /**
+ *
  * @author hiepnhse61627
  */
 @Entity
 @Table(name = "cs_producer", catalog = "computershop", schema = "", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"cd"})})
+    @UniqueConstraint(columnNames = {"cd"})})
 public class Producer implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -21,7 +36,8 @@ public class Producer implements Serializable {
     @Basic(optional = false)
     @Column(name = "cd", nullable = false, length = 100)
     private String cd;
-    @Column(name = "name", length = 255)
+    @Basic(optional = false)
+    @Column(name = "name", nullable = false, length = 255)
     private String name;
     @Column(name = "description", length = 255)
     private String description;
@@ -31,15 +47,19 @@ public class Producer implements Serializable {
     private String address;
     @Column(name = "phone", length = 20)
     private String phone;
-    @Column(name = "createdOn")
+    @Basic(optional = false)
+    @Column(name = "created_on", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
-    @Column(name = "createdBy", length = 50)
+    @Basic(optional = false)
+    @Column(name = "created_by", nullable = false, length = 50)
     private String createdBy;
-    @Column(name = "modifiedOn")
+    @Basic(optional = false)
+    @Column(name = "modified_on", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedOn;
-    @Column(name = "modifiedBy", length = 50)
+    @Basic(optional = false)
+    @Column(name = "modified_by", nullable = false, length = 50)
     private String modifiedBy;
 
     public Producer() {
@@ -49,9 +69,14 @@ public class Producer implements Serializable {
         this.id = id;
     }
 
-    public Producer(Integer id, String cd) {
+    public Producer(Integer id, String cd, String name, Date createdOn, String createdBy, Date modifiedOn, String modifiedBy) {
         this.id = id;
         this.cd = cd;
+        this.name = name;
+        this.createdOn = createdOn;
+        this.createdBy = createdBy;
+        this.modifiedOn = modifiedOn;
+        this.modifiedBy = modifiedBy;
     }
 
     public Integer getId() {
@@ -164,8 +189,7 @@ public class Producer implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CsProducer[ id=" + id + " ]";
+        return "entity.Producer[ id=" + id + " ]";
     }
-
+    
 }
-

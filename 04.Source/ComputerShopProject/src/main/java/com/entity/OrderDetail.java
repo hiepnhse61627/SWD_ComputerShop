@@ -1,10 +1,24 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
+ *
  * @author hiepnhse61627
  */
 @Entity
@@ -17,35 +31,41 @@ public class OrderDetail implements Serializable {
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
     private Integer id;
-    @Column(name = "orderCd", length = 100)
-    private String orderCd;
-    @Column(name = "productCd", length = 100)
+    @Basic(optional = false)
+    @Column(name = "order_id", nullable = false)
+    private int orderId;
+    @Basic(optional = false)
+    @Column(name = "product_cd", nullable = false, length = 100)
     private String productCd;
-    @Column(name = "productName", length = 255)
-    private String productName;
-    @Column(name = "quantity")
-    private Integer quantity;
+    @Basic(optional = false)
+    @Column(name = "quantity", nullable = false)
+    private int quantity;
+    @Basic(optional = false)
+    @Column(name = "total_price", nullable = false)
+    private float totalPrice;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "unitPrice", precision = 12)
-    private Float unitPrice;
-    @Column(name = "totalPrice", precision = 12)
-    private Float totalPrice;
-    @Column(name = "createdOn")
+    @Column(name = "total_sale_off", precision = 12)
+    private Float totalSaleOff;
+    @Column(name = "created_on")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
-    @Column(name = "createdBy", length = 50)
-    private String createdBy;
-    @Column(name = "modifiedOn")
+    @Column(name = "modified_on")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedOn;
-    @Column(name = "modifiedBy", length = 50)
-    private String modifiedBy;
 
     public OrderDetail() {
     }
 
     public OrderDetail(Integer id) {
         this.id = id;
+    }
+
+    public OrderDetail(Integer id, int orderId, String productCd, int quantity, float totalPrice) {
+        this.id = id;
+        this.orderId = orderId;
+        this.productCd = productCd;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
     }
 
     public Integer getId() {
@@ -56,12 +76,12 @@ public class OrderDetail implements Serializable {
         this.id = id;
     }
 
-    public String getOrderCd() {
-        return orderCd;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrderCd(String orderCd) {
-        this.orderCd = orderCd;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public String getProductCd() {
@@ -72,36 +92,28 @@ public class OrderDetail implements Serializable {
         this.productCd = productCd;
     }
 
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public Float getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(Float unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
-    public Float getTotalPrice() {
+    public float getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Float totalPrice) {
+    public void setTotalPrice(float totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Float getTotalSaleOff() {
+        return totalSaleOff;
+    }
+
+    public void setTotalSaleOff(Float totalSaleOff) {
+        this.totalSaleOff = totalSaleOff;
     }
 
     public Date getCreatedOn() {
@@ -112,28 +124,12 @@ public class OrderDetail implements Serializable {
         this.createdOn = createdOn;
     }
 
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
     public Date getModifiedOn() {
         return modifiedOn;
     }
 
     public void setModifiedOn(Date modifiedOn) {
         this.modifiedOn = modifiedOn;
-    }
-
-    public String getModifiedBy() {
-        return modifiedBy;
-    }
-
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
     }
 
     @Override
@@ -158,8 +154,7 @@ public class OrderDetail implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CsOrderDetail[ id=" + id + " ]";
+        return "entity.OrderDetail[ id=" + id + " ]";
     }
-
+    
 }
-
