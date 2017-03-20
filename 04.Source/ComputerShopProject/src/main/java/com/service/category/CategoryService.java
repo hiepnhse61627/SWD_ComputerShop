@@ -34,7 +34,7 @@ public class CategoryService implements ICategoryService {
     public CategoryDTO updateCategory(CategoryDTO categoryDTO) {
         checkNullInCategoryDTO(categoryDTO);
         checkForDuplicateNameWhenUpdate(categoryDTO);
-        Category category = findCategoryEntityByCategoryCode(categoryDTO.getCd());
+        Category category = findCategoryByCategoryCode(categoryDTO.getCd());
         category.setName(categoryDTO.getName());
         if (categoryDTO.getDescription() != null) {
             category.setDescription(categoryDTO.getDescription());
@@ -47,7 +47,7 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public String removeCategory(String categoryCode) {
-        Category category = findCategoryEntityByCategoryCode(categoryCode);
+        Category category = findCategoryByCategoryCode(categoryCode);
         categoryRepository.delete(category);
         return categoryCode;
     }
@@ -66,16 +66,20 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public CategoryDTO findCategoryByCategoryCode(String categoryCode) {
-        Category category = findCategoryEntityByCategoryCode(categoryCode);
-        return CategoryUtil.convertEntityToDTO(category);
-    }
-
-    @Override
-    public Category findCategoryEntityByCategoryCode(String categoryCode) {
+    public Category findCategoryByCategoryCode(String categoryCode) {
         Category category = categoryRepository.findCategoryByCode(categoryCode);
         if (category != null) {
             return category;
+        } else {
+            throw new EntityNotFoundException("Not found category have categoryCode: " + categoryCode);
+        }
+    }
+
+    @Override
+    public CategoryDTO findCategoryDTOByCategoryCode(String categoryCode) {
+        Category category = categoryRepository.findCategoryByCode(categoryCode);
+        if (category != null) {
+            return CategoryUtil.convertEntityToDTO(category);
         } else {
             throw new EntityNotFoundException("Not found category have categoryCode: " + categoryCode);
         }
@@ -99,8 +103,8 @@ public class CategoryService implements ICategoryService {
         List<Category> categoryList = categoryRepository.findAll();
         if (!categoryList.isEmpty()) {
             for (Category category : categoryList) {
-                if (categoryDTO.getName().equalsIgnoreCase(category.getName()) &&
-                        !categoryDTO.getCd().equalsIgnoreCase(category.getCd())) {
+                if ((categoryDTO.getName().equalsIgnoreCase(category.getName())) &&
+                        !(categoryDTO.getCd().equalsIgnoreCase(category.getCd()))) {
                     throw new IllegalArgumentException("Duplicate category name: " + categoryDTO.getName());
                 }
             }
