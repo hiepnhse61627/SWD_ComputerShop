@@ -1,24 +1,28 @@
-package com.service;
+package com.service.saleoff;
 
 import com.dto.SaleoffDTO;
 import com.entity.Saleoff;
+import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by hiepnhse61627 on 10/03/2017.
  */
+@Service
 public interface ISaleoffService {
 
     public SaleoffDTO createSaleoff(SaleoffDTO dto);
 
     public SaleoffDTO updateSaleoff(SaleoffDTO dto);
 
-    public void removeSaleoff(Integer id);
+    public String removeSaleoff(String saleOffCd);
 
     public List<SaleoffDTO> getListSaleoff();
 
-    public SaleoffDTO findSaleoffDTOById(Integer id);
+    public Saleoff findSaleoffEntityBySaleOffCd(String saleOffCd);
 
-    public Saleoff findSaleoffById(Integer id);
+    public SaleoffDTO findSaleOffBySaleOffCd(String saleOffCd);
+
 }

@@ -2,12 +2,14 @@ package com.service.product;
 
 import com.dto.ProductDTO;
 import com.entity.Product;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by hiepnhse61627 on 07/03/2017.
  */
+@Service
 public interface IProductService {
 
     public ProductDTO createProduct(ProductDTO productDTO);
@@ -24,5 +26,7 @@ public interface IProductService {
 
     public List<ProductDTO> getListProductByName(String productName);
 
-    public Product findProductByProductCode(String productCode);
+    public Product findProductEntityByProductCode(String productCode);
+
+    public ProductDTO findProductByProductCode(String productCode);
 }

@@ -9,6 +9,7 @@ import com.service.category.ICategoryService;
 import com.service.producer.IProducerService;
 import com.util.ProductUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.List;
 /**
  * Created by MinhQuy on 3/13/2017.
  */
+@Service
 public class ProductService implements IProductService {
 
     @Autowired
@@ -31,15 +33,21 @@ public class ProductService implements IProductService {
 
     @Override
     public ProductDTO createProduct(ProductDTO productDTO) {
-
-        return null;
+        checkNullInProductDTO(productDTO);
+        checkDuplicateCodeAndNameWhenInsert(productDTO);
+        producerService.findProducerByProducerCode(productDTO.getProducerCd());
+        categoryService.findCategoryByCategoryCode(productDTO.getCategoryCd());
+        Product product = ProductUtil.convertDTOToEntity(productDTO);
+        Product savedProduct = productRepository.save(product);
+        return ProductUtil.convertEntityToDTO(savedProduct);
     }
 
     @Override
     public ProductDTO updateProduct(ProductDTO productDTO) {
-        Product product = findProductByProductCode(productDTO.getProductCd());
-        Producer producer = producerService.findProducerByProducerCode(productDTO.getProducerCd());
-        Category category = categoryService.findCategoryByCategoryCode(productDTO.getCategoryCd());
+        checkNullInProductDTO(productDTO);
+        Product product = findProductEntityByProductCode(productDTO.getProductCd());
+        Producer producer = producerService.findProducerEntityByProducerCode(productDTO.getProducerCd());
+        Category category = categoryService.findCategoryEntityByCategoryCode(productDTO.getCategoryCd());
         checkDuplicateNameWhenUpdate(productDTO);
         product.setProducerCd(producer.getCd());
         product.setCategoryCd(category.getCd());
@@ -60,7 +68,7 @@ public class ProductService implements IProductService {
 
     @Override
     public String removeProduct(String productCode) {
-        Product product = findProductByProductCode(productCode);
+        Product product = findProductEntityByProductCode(productCode);
         productRepository.delete(product);
         return product.getCd();
     }
@@ -118,7 +126,13 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Product findProductByProductCode(String productCode) {
+    public ProductDTO findProductByProductCode(String productCode) {
+        Product product = findProductEntityByProductCode(productCode);
+        return ProductUtil.convertEntityToDTO(product);
+    }
+
+    @Override
+    public Product findProductEntityByProductCode(String productCode) {
         Product product = productRepository.findProductByProductCode(productCode);
         if (product != null) {
             return product;

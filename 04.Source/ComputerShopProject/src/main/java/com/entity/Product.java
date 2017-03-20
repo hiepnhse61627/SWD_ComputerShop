@@ -54,6 +54,8 @@ public class Product implements Serializable {
     private Boolean isSaleOff;
     @Column(name = "sale_off_cd", length = 100)
     private String saleOffCd;
+    @Column(name = "image_url")
+    private String imageUrl;
     @Basic(optional = false)
     @Column(name = "created_on", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -191,6 +193,22 @@ public class Product implements Serializable {
 
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
+    }
+
+    public Boolean getSaleOff() {
+        return isSaleOff;
+    }
+
+    public void setSaleOff(Boolean saleOff) {
+        isSaleOff = saleOff;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override

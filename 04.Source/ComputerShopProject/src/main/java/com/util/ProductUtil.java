@@ -25,6 +25,9 @@ public class ProductUtil {
         if (product.getIsSaleOff()) {
             productDTO.setSaleOffCd(product.getSaleOffCd());
         }
+        if (product.getImageUrl() != null) {
+            productDTO.setImageUrl(product.getImageUrl());
+        }
         if (product.getCreatedBy() != null) {
             productDTO.setCreatedBy(product.getCreatedBy());
         }

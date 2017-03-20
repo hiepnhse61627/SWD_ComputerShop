@@ -5,6 +5,7 @@ import com.entity.Producer;
 import com.repository.ProducerRepository;
 import com.util.ProducerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * Created by MinhQuy on 3/12/2017.
  */
+@Service
 public class ProducerService implements IProducerService {
 
     @Autowired
@@ -31,7 +33,7 @@ public class ProducerService implements IProducerService {
     @Override
     public ProducerDTO updateProducer(ProducerDTO producerDTO) {
         checkNullInProducerDTO(producerDTO);
-        Producer producer = findProducerByProducerCode(producerDTO.getProducerCd());
+        Producer producer = findProducerEntityByProducerCode(producerDTO.getProducerCd());
         checkDuplicateNameWhenUpdate(producerDTO);
         if (producerDTO.getProducerName() != null) {
             producer.setName(producerDTO.getProducerName());
@@ -56,7 +58,7 @@ public class ProducerService implements IProducerService {
 
     @Override
     public String removeProducer(String producerCode) {
-        Producer producer = findProducerByProducerCode(producerCode);
+        Producer producer = findProducerEntityByProducerCode(producerCode);
         producerRepository.delete(producer);
         return producerCode;
     }
@@ -75,13 +77,19 @@ public class ProducerService implements IProducerService {
     }
 
     @Override
-    public Producer findProducerByProducerCode(String producerCode) {
+    public Producer findProducerEntityByProducerCode(String producerCode) {
         Producer producer = producerRepository.findProducerByProducerCode(producerCode);
         if (producer != null) {
             return producer;
         } else {
             throw new EntityNotFoundException("Not found producer have producerCode: " + producerCode);
         }
+    }
+
+    @Override
+    public ProducerDTO findProducerByProducerCode(String producerCode) {
+        Producer producer = findProducerEntityByProducerCode(producerCode);
+        return ProducerUtil.convertEntityToDTO(producer);
     }
 
     private void checkDuplicateCdAndNameWhenInsert(ProducerDTO producerDTO) {

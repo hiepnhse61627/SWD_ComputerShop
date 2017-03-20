@@ -25,6 +25,8 @@ public class ProductDTO {
 
     private String saleOffCd;
 
+    private String imageUrl;
+
     private Date createdOn;
 
     private String createdBy;
@@ -37,7 +39,7 @@ public class ProductDTO {
 
     }
 
-    public ProductDTO(String productCd, String categoryCd, String producerCd, String productName, String productDescription, Float productPrice, Boolean isSaleOff, String saleOffCd, Date createdOn, String createdBy, Date modifiedOn, String modifiedBy) {
+    public ProductDTO(String productCd, String categoryCd, String producerCd, String productName, String productDescription, Float productPrice, Boolean isSaleOff, String saleOffCd, String imageUrl, Date createdOn, String createdBy, Date modifiedOn, String modifiedBy) {
         this.productCd = productCd;
         this.categoryCd = categoryCd;
         this.producerCd = producerCd;
@@ -46,10 +48,19 @@ public class ProductDTO {
         this.productPrice = productPrice;
         this.isSaleOff = isSaleOff;
         this.saleOffCd = saleOffCd;
+        this.imageUrl = imageUrl;
         this.createdOn = createdOn;
         this.createdBy = createdBy;
         this.modifiedOn = modifiedOn;
         this.modifiedBy = modifiedBy;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public Integer getProductId() {

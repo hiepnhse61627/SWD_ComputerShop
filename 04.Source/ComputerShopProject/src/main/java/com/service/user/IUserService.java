@@ -14,11 +14,15 @@ public interface IUserService {
 
     public UserDTO updateUser(UserDTO dto);
 
-    public String removeUser(Integer id);
+    public Integer removeUser(Integer id);
 
     public List<UserDTO> getListUser();
 
     public UserDTO findUserDTOById(Integer id);
 
     public User findUserById(Integer id);
+
+    public UserDTO findUserDTOByUsername(String username);
+
+    public User checkLogin(String username, String password);
 }

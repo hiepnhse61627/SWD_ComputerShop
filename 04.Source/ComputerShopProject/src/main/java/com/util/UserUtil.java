@@ -32,7 +32,7 @@ public class UserUtil {
             user.setCreditCardNo(userDTO.getCreditCardNo());
         }
         user.setIsVip(userDTO.getVip());
-        user.setIsAdmin(false);
+        user.setIsAdmin(userDTO.getAdmin());
         user.setCreatedOn(new Date());
         user.setModifiedOn(new Date());
         return user;
