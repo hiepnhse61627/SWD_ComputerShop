@@ -48,8 +48,8 @@
             </li>
             <li><a href="#"><i class="fa fa-link"></i> <span>Quản lý sản phẩm</span></a>
             	<ul class="treeview-menu">
-            		<li><a href="../Category/create-category.jsp">Tạo mới sản phẩm</a></li>
-            		<li><a href="../Category/list-category.jsp">Danh sách sản phẩm</a></li>
+            		<li><a href="#">Tạo mới sản phẩm</a></li>
+            		<li><a href="#">Danh sách sản phẩm</a></li>
             	</ul>
             </li>
             <li><a href="#"><i class="fa fa-link"></i> <span>Quản lý nhà cung cấp</span></a>

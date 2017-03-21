@@ -14,6 +14,8 @@
 		<link rel="stylesheet" href="../AdminResource/bootstrap/css/ionicons.min.css">
 		<!-- Theme style -->
 		<link rel="stylesheet" href="../AdminResource/dist/css/AdminLTE.min.css">
+		<!-- Data Tables-->
+		<link rel="stylesheet" href="../AdminResource/plugins/datatables/dataTables.bootstrap.css">
 		<!-- AdminLTE Skins. We have chosen the skin-blue for this starter
 			   page. However, you can choose any other skin. Make sure you
 			   apply the skin class to the body tag so the changes take effect.
