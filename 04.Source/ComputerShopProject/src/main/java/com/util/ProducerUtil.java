@@ -57,7 +57,7 @@ public class ProducerUtil {
             producer.setCreatedBy(producerDTO.getCreatedBy());
         }
         producer.setCreatedOn(new Date());
-        if (producer.getModifiedBy() != null) {
+        if (producerDTO.getModifiedBy() != null) {
             producer.setModifiedBy(producerDTO.getModifiedBy());
         }
         producer.setModifiedOn(new Date());

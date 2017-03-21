@@ -20,9 +20,7 @@ public interface ICategoryService {
 
     public List<CategoryDTO> getAllCategory();
 
-    public CategoryDTO findCategoryByCategoryCode(String categoryCode);
-
-    public Category findCategoryEntityByCategoryCode(String categoryCode);
+    public Category findCategoryByCategoryCode(String categoryCode);
 
     public CategoryDTO findCategoryDTOByCategoryCode(String categoryCode);
 }

@@ -25,12 +25,15 @@ public class ProducerController {
     @CrossOrigin(allowedHeaders = "*", allowCredentials = "true")
     @RequestMapping(value = "/producer", method = RequestMethod.POST)
     public Map<String, Object> createNewProducer(ProducerDTO producerDTO) {
+        producerDTO.setCreatedBy("admin");
+        producerDTO.setModifiedBy("");
         return ResponseUtil.responseObject(producerService.createProducer(producerDTO));
     }
 
     @CrossOrigin(allowedHeaders = "*", allowCredentials = "true")
     @RequestMapping(value = "/producer-update", method = RequestMethod.POST)
     public Map<String, Object> updateProducer(ProducerDTO producerDTO) {
+        producerDTO.setModifiedBy("admin");
         return ResponseUtil.responseObject(producerService.updateProducer(producerDTO));
     }
 
@@ -41,7 +44,7 @@ public class ProducerController {
     }
 
     @CrossOrigin(allowedHeaders = "*", allowCredentials = "true")
-    @RequestMapping(value = "/producer/getByCode", method = RequestMethod.GET)
+    @RequestMapping(value = "/producer-detail", method = RequestMethod.GET)
     public Map<String, Object> getProducerByCode(@RequestParam("producerCode") String producerCode) {
         return ResponseUtil.responseObject(producerService.findProducerByProducerCode(producerCode));
     }
