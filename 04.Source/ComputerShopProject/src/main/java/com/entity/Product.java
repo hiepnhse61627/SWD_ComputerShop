@@ -40,8 +40,8 @@ public class Product implements Serializable {
     @Column(name = "name", nullable = false, length = 255)
     private String name;
     @Basic(optional = false)
-    @Column(name = "category_cd", nullable = false, length = 100)
-    private String categoryCd;
+    @Column(name = "sub_category_cd", nullable = false, length = 100)
+    private String subCategoryCd;
     @Basic(optional = false)
     @Column(name = "producer_cd", nullable = false, length = 100)
     private String producerCd;
@@ -78,11 +78,11 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public Product(Integer id, String cd, String name, String categoryCd, String producerCd, float price, Date createdOn, String createdBy, Date modifiedOn, String modifiedBy) {
+    public Product(Integer id, String cd, String name, String subCategoryCd, String producerCd, float price, Date createdOn, String createdBy, Date modifiedOn, String modifiedBy) {
         this.id = id;
         this.cd = cd;
         this.name = name;
-        this.categoryCd = categoryCd;
+        this.subCategoryCd = subCategoryCd;
         this.producerCd = producerCd;
         this.price = price;
         this.createdOn = createdOn;
@@ -113,14 +113,6 @@ public class Product implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCategoryCd() {
-        return categoryCd;
-    }
-
-    public void setCategoryCd(String categoryCd) {
-        this.categoryCd = categoryCd;
     }
 
     public String getProducerCd() {
@@ -209,6 +201,14 @@ public class Product implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getSubCategoryCd() {
+        return subCategoryCd;
+    }
+
+    public void setSubCategoryCd(String subCategoryCd) {
+        this.subCategoryCd = subCategoryCd;
     }
 
     @Override

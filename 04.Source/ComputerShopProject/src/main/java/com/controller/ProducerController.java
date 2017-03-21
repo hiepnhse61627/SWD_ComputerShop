@@ -29,7 +29,7 @@ public class ProducerController {
     }
 
     @CrossOrigin(allowedHeaders = "*", allowCredentials = "true")
-    @RequestMapping(value = "/producer", method = RequestMethod.PUT)
+    @RequestMapping(value = "/producer-update", method = RequestMethod.POST)
     public Map<String, Object> updateProducer(ProducerDTO producerDTO) {
         return ResponseUtil.responseObject(producerService.updateProducer(producerDTO));
     }

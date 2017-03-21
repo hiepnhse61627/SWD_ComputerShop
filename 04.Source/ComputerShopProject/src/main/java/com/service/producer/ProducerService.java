@@ -32,7 +32,6 @@ public class ProducerService implements IProducerService {
 
     @Override
     public ProducerDTO updateProducer(ProducerDTO producerDTO) {
-        checkNullInProducerDTO(producerDTO);
         Producer producer = findProducerEntityByProducerCode(producerDTO.getProducerCd());
         checkDuplicateNameWhenUpdate(producerDTO);
         if (producerDTO.getProducerName() != null) {
@@ -107,12 +106,14 @@ public class ProducerService implements IProducerService {
     }
 
     private void checkDuplicateNameWhenUpdate(ProducerDTO producerDTO) {
-        List<Producer> producerList = producerRepository.findAll();
-        if (!producerList.isEmpty()) {
-            for (Producer producer : producerList) {
-                if (producerDTO.getProducerName().equalsIgnoreCase(producer.getName())
-                        && !producerDTO.getProducerCd().equalsIgnoreCase(producer.getCd())) {
-                    throw new IllegalArgumentException("Duplicate producer name: " + producerDTO.getProducerCd());
+        if (producerDTO.getProducerName() != null) {
+            List<Producer> producerList = producerRepository.findAll();
+            if (!producerList.isEmpty()) {
+                for (Producer producer : producerList) {
+                    if (producerDTO.getProducerName().equalsIgnoreCase(producer.getName())
+                            && !producerDTO.getProducerCd().equalsIgnoreCase(producer.getCd())) {
+                        throw new IllegalArgumentException("Duplicate producer name: " + producerDTO.getProducerCd());
+                    }
                 }
             }
         }

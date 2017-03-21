@@ -29,7 +29,7 @@ public class SaleOffController {
         return ResponseUtil.responseObject(saleoffService.createSaleoff(saleoffDTO));
     }
 
-    @RequestMapping(value = "/saleOff", method = RequestMethod.PUT)
+    @RequestMapping(value = "/saleOff-update", method = RequestMethod.POST)
     public Map<String, Object> updateSaleOff(SaleoffDTO saleoffDTO) {
         return ResponseUtil.responseObject(saleoffService.updateSaleoff(saleoffDTO));
     }

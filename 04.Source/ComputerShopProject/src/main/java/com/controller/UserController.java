@@ -17,7 +17,7 @@ public class UserController {
     IUserService userService;
 
     @CrossOrigin(allowedHeaders = "*", allowCredentials = "true")
-    @RequestMapping(value = "/user/checkLogin", method = RequestMethod.GET)
+    @RequestMapping(value = "/user-checkLogin", method = RequestMethod.GET)
     public Map<String, Object> checkLogin(@RequestParam("username") String username,
                                           @RequestParam("password") String password) {
         return ResponseUtil.responseObject(userService.checkLogin(username, password));
@@ -36,13 +36,13 @@ public class UserController {
     }
 
     @CrossOrigin(allowedHeaders = "*", allowCredentials = "true")
-    @RequestMapping(value = "/user", method = RequestMethod.PUT)
+    @RequestMapping(value = "/user-update", method = RequestMethod.POST)
     public Map<String, Object> updateUser(UserDTO userDTO) {
         return ResponseUtil.responseObject(userService.updateUser(userDTO));
     }
 
     @CrossOrigin(allowedHeaders = "*", allowCredentials = "true")
-    @RequestMapping(value = "/user/removeByUsername", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/user-removeByUsername", method = RequestMethod.DELETE)
     public Map<String, Object> removeUser(@RequestParam("userId") Integer id) {
         return ResponseUtil.responseObject(userService.removeUser(id));
     }

@@ -32,10 +32,11 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public CategoryDTO updateCategory(CategoryDTO categoryDTO) {
-        checkNullInCategoryDTO(categoryDTO);
         checkForDuplicateNameWhenUpdate(categoryDTO);
         Category category = findCategoryByCategoryCode(categoryDTO.getCd());
-        category.setName(categoryDTO.getName());
+        if (categoryDTO.getName() != null) {
+            category.setName(categoryDTO.getName());
+        }
         if (categoryDTO.getDescription() != null) {
             category.setDescription(categoryDTO.getDescription());
         }

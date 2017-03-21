@@ -11,7 +11,7 @@ public class ProductDTO {
 
     private String productCd;
 
-    private String categoryCd;
+    private String subCategoryCd;
 
     private String producerCd;
 
@@ -39,9 +39,9 @@ public class ProductDTO {
 
     }
 
-    public ProductDTO(String productCd, String categoryCd, String producerCd, String productName, String productDescription, Float productPrice, Boolean isSaleOff, String saleOffCd, String imageUrl, Date createdOn, String createdBy, Date modifiedOn, String modifiedBy) {
+    public ProductDTO(String productCd, String subCategoryCd, String producerCd, String productName, String productDescription, Float productPrice, Boolean isSaleOff, String saleOffCd, String imageUrl, Date createdOn, String createdBy, Date modifiedOn, String modifiedBy) {
         this.productCd = productCd;
-        this.categoryCd = categoryCd;
+        this.subCategoryCd = subCategoryCd;
         this.producerCd = producerCd;
         this.productName = productName;
         this.productDescription = productDescription;
@@ -77,14 +77,6 @@ public class ProductDTO {
 
     public void setProductCd(String productCd) {
         this.productCd = productCd;
-    }
-
-    public String getCategoryCd() {
-        return categoryCd;
-    }
-
-    public void setCategoryCd(String categoryCd) {
-        this.categoryCd = categoryCd;
     }
 
     public String getProducerCd() {
@@ -165,5 +157,13 @@ public class ProductDTO {
 
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
+    }
+
+    public String getSubCategoryCd() {
+        return subCategoryCd;
+    }
+
+    public void setSubCategoryCd(String subCategoryCd) {
+        this.subCategoryCd = subCategoryCd;
     }
 }

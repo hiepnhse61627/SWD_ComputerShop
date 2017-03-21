@@ -52,9 +52,13 @@ public class UserService implements IUserService {
         if (dto.getModifiedBy() != null) {
             user.setModifiedBy(dto.getModifiedBy());
         }
+        if (dto.getPassword() != null) {
+            user.setPassword(dto.getPassword());
+        }
         user.setModifiedOn(new Date());
         user.setIsVip(dto.getVip());
-        return null;
+        User updateUser = userRepository.save(user);
+        return UserUtil.convertEntityToDTO(updateUser);
     }
 
     @Override

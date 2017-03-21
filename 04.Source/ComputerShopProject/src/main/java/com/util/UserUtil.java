@@ -31,6 +31,9 @@ public class UserUtil {
         if (userDTO.getCreditCardNo() != null) {
             user.setCreditCardNo(userDTO.getCreditCardNo());
         }
+        if (userDTO.getModifiedBy() != null) {
+            user.setModifiedBy(userDTO.getModifiedBy());
+        }
         user.setIsVip(userDTO.getVip());
         user.setIsAdmin(userDTO.getAdmin());
         user.setCreatedOn(new Date());

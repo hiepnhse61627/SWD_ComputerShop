@@ -23,13 +23,13 @@ public class ProductController {
     }
 
     @CrossOrigin(allowedHeaders = "*", allowCredentials = "true")
-    @RequestMapping(value = "/product/getByCode", method = RequestMethod.GET)
+    @RequestMapping(value = "/product-getByCode", method = RequestMethod.GET)
     private Map<String, Object> getProductByCode(@RequestParam("productCode") String productCode) {
         return ResponseUtil.responseObject(productService.findProductByProductCode(productCode));
     }
 
     @CrossOrigin(allowedHeaders = "*", allowCredentials = "true")
-    @RequestMapping(value = "/product/getByName", method = RequestMethod.GET)
+    @RequestMapping(value = "/product-getByName", method = RequestMethod.GET)
     private Map<String, Object> getProductByName(@RequestParam("productName") String productName) {
         return ResponseUtil.responseObject(productService.getListProductByName(productName));
     }
@@ -41,7 +41,7 @@ public class ProductController {
     }
 
     @CrossOrigin(allowedHeaders = "*", allowCredentials = "true")
-    @RequestMapping(value = "/product", method = RequestMethod.PUT)
+    @RequestMapping(value = "/product-update", method = RequestMethod.POST)
     private Map<String, Object> updateProduct(ProductDTO productDTO) {
         return ResponseUtil.responseObject(productService.updateProduct(productDTO));
     }
@@ -51,12 +51,12 @@ public class ProductController {
         return ResponseUtil.responseObject(productService.removeProduct(productCode));
     }
 
-    @RequestMapping(value = "/product/getByProducerCode", method = RequestMethod.GET)
+    @RequestMapping(value = "/product-getByProducerCode", method = RequestMethod.GET)
     private Map<String, Object> getProductByProducer(@RequestParam("producerCode") String producerCode) {
         return ResponseUtil.responseObject(productService.getListProductByProducerCode(producerCode));
     }
 
-    @RequestMapping(value = "/product/getByCategoryCode", method = RequestMethod.GET)
+    @RequestMapping(value = "/product-getByCategoryCode", method = RequestMethod.GET)
     private Map<String, Object> getProductByCategory(@RequestParam("categoryCode") String categoryCode) {
         return ResponseUtil.responseObject(productService.getListProductByCategoryCode(categoryCode));
     }

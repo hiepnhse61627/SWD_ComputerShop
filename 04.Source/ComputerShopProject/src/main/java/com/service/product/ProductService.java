@@ -4,9 +4,12 @@ import com.dto.ProductDTO;
 import com.entity.Category;
 import com.entity.Producer;
 import com.entity.Product;
+import com.entity.SubCategory;
 import com.repository.ProductRepository;
 import com.service.category.ICategoryService;
 import com.service.producer.IProducerService;
+import com.service.subcategory.ISubCategoryService;
+import com.service.subcategory.SubCategoryService;
 import com.util.ProductUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,12 +34,15 @@ public class ProductService implements IProductService {
     @Autowired
     ICategoryService categoryService;
 
+    @Autowired
+    ISubCategoryService subCategoryService;
+
     @Override
     public ProductDTO createProduct(ProductDTO productDTO) {
         checkNullInProductDTO(productDTO);
         checkDuplicateCodeAndNameWhenInsert(productDTO);
         producerService.findProducerByProducerCode(productDTO.getProducerCd());
-        categoryService.findCategoryByCategoryCode(productDTO.getCategoryCd());
+        subCategoryService.getSubCategoryByCd(productDTO.getSubCategoryCd());
         Product product = ProductUtil.convertDTOToEntity(productDTO);
         Product savedProduct = productRepository.save(product);
         return ProductUtil.convertEntityToDTO(savedProduct);
@@ -44,14 +50,19 @@ public class ProductService implements IProductService {
 
     @Override
     public ProductDTO updateProduct(ProductDTO productDTO) {
-        checkNullInProductDTO(productDTO);
         Product product = findProductEntityByProductCode(productDTO.getProductCd());
-        Producer producer = producerService.findProducerEntityByProducerCode(productDTO.getProducerCd());
-        Category category = categoryService.findCategoryEntityByCategoryCode(productDTO.getCategoryCd());
-        checkDuplicateNameWhenUpdate(productDTO);
-        product.setProducerCd(producer.getCd());
-        product.setCategoryCd(category.getCd());
-        product.setName(productDTO.getProductName());
+        if (productDTO.getProductName() != null) {
+            checkDuplicateNameWhenUpdate(productDTO);
+            product.setName(productDTO.getProductName());
+        }
+        if (productDTO.getProducerCd() != null) {
+            Producer producer = producerService.findProducerEntityByProducerCode(productDTO.getProducerCd());
+            product.setProducerCd(producer.getCd());
+        }
+        if (productDTO.getSubCategoryCd() != null) {
+            SubCategory subCategory = subCategoryService.getSubCategoryByCd(productDTO.getSubCategoryCd());
+            product.setSubCategoryCd(subCategory.getCd());
+        }
         product.setIsSaleOff(productDTO.getSaleOff());
         if (productDTO.getSaleOff()) {
             product.setSaleOffCd(productDTO.getSaleOffCd());
@@ -178,7 +189,7 @@ public class ProductService implements IProductService {
         if (productDTO.getProducerCd() == null || productDTO.getProducerCd().isEmpty()) {
             throw new IllegalArgumentException("Producer code of product must be not null");
         }
-        if (productDTO.getCategoryCd() == null || productDTO.getCategoryCd().isEmpty()) {
+        if (productDTO.getSubCategoryCd() == null || productDTO.getSubCategoryCd().isEmpty()) {
             throw new IllegalArgumentException("Category code of product must be not null");
         }
     }

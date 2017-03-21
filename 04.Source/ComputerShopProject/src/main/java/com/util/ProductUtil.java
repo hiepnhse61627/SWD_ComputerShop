@@ -15,7 +15,7 @@ public class ProductUtil {
         productDTO.setProductId(product.getId());
         productDTO.setProductCd(product.getCd());
         productDTO.setProductName(product.getName());
-        productDTO.setCategoryCd(product.getCategoryCd());
+        productDTO.setSubCategoryCd(product.getSubCategoryCd());
         productDTO.setProducerCd(product.getProducerCd());
         if (product.getDescription() != null) {
             productDTO.setProductDescription(product.getDescription());
@@ -42,7 +42,7 @@ public class ProductUtil {
     public static Product convertDTOToEntity(ProductDTO productDTO) {
         Product product = new Product();
         product.setCd(productDTO.getProductCd());
-        product.setCategoryCd(productDTO.getCategoryCd());
+        product.setSubCategoryCd(productDTO.getSubCategoryCd());
         product.setProducerCd(productDTO.getProducerCd());
         product.setName(productDTO.getProductName());
         product.setIsSaleOff(productDTO.getSaleOff());
