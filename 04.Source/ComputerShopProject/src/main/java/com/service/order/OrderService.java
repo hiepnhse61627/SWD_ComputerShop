@@ -3,19 +3,20 @@ package com.service.order;
 import com.dto.OrderAndOrderDetailDTO;
 import com.dto.OrderDTO;
 import com.dto.OrderDetailDTO;
-import com.entity.Order;
-import com.entity.OrderDetail;
-import com.entity.Product;
-import com.entity.Saleoff;
+import com.dto.ShippingInfoDTO;
+import com.entity.*;
 import com.repository.OrderDetailRepository;
 import com.repository.OrderRepository;
+import com.repository.ShippingRepository;
 import com.service.product.IProductService;
 import com.service.saleoff.ISaleoffService;
 import com.service.user.IUserService;
 import com.util.OrderDetailUtil;
 import com.util.OrderUtil;
+import com.util.ShippingUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,6 +25,7 @@ import java.util.List;
 /**
  * Created by MinhQuy on 3/21/2017.
  */
+@Service
 public class OrderService implements IOrderService {
     @Autowired
     IUserService userService;
@@ -39,6 +41,9 @@ public class OrderService implements IOrderService {
 
     @Autowired
     ISaleoffService saleoffService;
+
+    @Autowired
+    ShippingRepository shippingRepository;
 
     @Override
     public OrderDetailDTO addToCart(String username, OrderDetailDTO orderDetailDTO) {
@@ -135,6 +140,29 @@ public class OrderService implements IOrderService {
             }
         }
         return orderAndOrderDetailDTOList;
+    }
+
+    @Override
+    public List<OrderDetailDTO> getOrderDetailByOrderId(Integer orderId) {
+        List<OrderDetail> orderDetailList = orderDetailRepository.getOrderDetailByOrderId(orderId);
+        List<OrderDetailDTO> orderDetailDTOList = new ArrayList<>();
+        if (!orderDetailList.isEmpty()) {
+            for (OrderDetail orderDetail : orderDetailList) {
+                OrderDetailDTO orderDetailDTO = OrderDetailUtil.convertEntityToDTO(orderDetail);
+                orderDetailDTOList.add(orderDetailDTO);
+            }
+        }
+        return orderDetailDTOList;
+    }
+
+    @Override
+    public ShippingInfoDTO checkOut(ShippingInfoDTO shippingInfoDTO) {
+        Order order = orderRepository.findOne(shippingInfoDTO.getOrderId());
+        order.setStatus("shipping");
+        order.setModifiedOn(new Date());
+        ShippingInfo shippingInfo = ShippingUtil.convertDTOToEntity(shippingInfoDTO);
+        ShippingInfo savedShippingInfo = shippingRepository.save(shippingInfo);
+        return ShippingUtil.convertEntityToDTO(savedShippingInfo);
     }
 
 }
