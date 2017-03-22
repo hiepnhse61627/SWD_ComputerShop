@@ -10,8 +10,6 @@ public class OrderDTO {
 
     private String customerCd;
 
-    private String customerName;
-
     private String status;
 
     private Float totalPrice;
@@ -22,10 +20,9 @@ public class OrderDTO {
 
     private Date modifiedOn;
 
-    public OrderDTO(Integer id, String customerCd, String customerName, String status, Float totalPrice, Date createdOn, String modifiedBy, Date modifiedOn) {
+    public OrderDTO(Integer id, String customerCd, String status, Float totalPrice, Date createdOn, String modifiedBy, Date modifiedOn) {
         this.id = id;
         this.customerCd = customerCd;
-        this.customerName = customerName;
         this.status = status;
         this.totalPrice = totalPrice;
         this.createdOn = createdOn;
@@ -50,14 +47,6 @@ public class OrderDTO {
 
     public void setCustomerCd(String customerCd) {
         this.customerCd = customerCd;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
     }
 
     public String getStatus() {
